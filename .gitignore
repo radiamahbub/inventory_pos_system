@@ -26,3 +26,9 @@ dist/
 .DS_Store
 .vscode/
 .idea/
+
+# Temporary migration files and database backups
+backend/config/sqlite_settings.py
+backend/*_backup.sqlite3
+backend/*.dump
+backend/sqlite_business_data.json
