@@ -1,10 +1,10 @@
 # 📦 Inventory & POS Management System
 
-A web-based **Inventory & Point of Sale (POS) Management System** designed to simplify and automate daily shop operations.
+A full-stack **Inventory & Point of Sale (POS) Management System** developed as a BASIS final project.
 
-The application provides centralized management of products, categories, suppliers, customers, purchases, sales, stock levels, invoices, and financial reports.
+The application helps small and medium-sized businesses manage their daily operations through a centralized web-based platform. It provides inventory management, purchase processing, POS sales, customer and supplier management, financial tracking, and business reporting.
 
-Built with **Python and Django**, the system initially uses SQLite for development, with PostgreSQL planned for production deployment.
+The project uses a **Django REST Framework backend** and a modern **React frontend**, with PostgreSQL as its database.
 
 ---
 
@@ -36,26 +36,27 @@ Built with **Python and Django**, the system initially uses SQLite for developme
 
 ## 🚀 Project Overview
 
-The Inventory & POS Management System is designed to help small and medium-sized businesses manage their daily shop activities efficiently.
+The Inventory & POS Management System is designed to simplify and automate everyday shop management activities.
 
-The system automates inventory updates, purchase entries, sales transactions, invoice generation, and business reporting.
-
-Instead of maintaining stock and sales records manually, administrators and cashiers can perform their respective activities through a centralized web application.
+Instead of maintaining inventory and sales records manually, administrators and cashiers can use a centralized application to manage products, purchases, sales, customers, suppliers, and business performance.
 
 ### Project Information
 
 | Information | Details |
 |---|---|
 | Project Name | Inventory & POS Management System |
-| Project Type | Web-Based Application |
-| Backend Framework | Django |
+| Project Type | Full-Stack Web Application |
+| Project Category | BASIS Final Project |
+| Backend | Django REST Framework |
 | Programming Language | Python |
-| Frontend | React / Django Template Language (DTL) |
-| Development Database | SQLite |
-| Production Database | PostgreSQL |
+| Frontend | React + TypeScript |
+| Frontend Build Tool | Vite |
+| UI Styling | Tailwind CSS |
+| Database | PostgreSQL |
+| Authentication | JWT |
+| API Documentation | drf-spectacular |
 | Version Control | Git & GitHub |
-| Deployment | VPS / Cloud Hosting |
-| User Roles | Admin and Cashier |
+| Deployment Plan | Render + Vercel |
 
 ---
 
@@ -66,9 +67,10 @@ Instead of maintaining stock and sales records manually, administrators and cash
 - Maintain organized supplier and customer records.
 - Reduce manual data entry and calculation errors.
 - Generate printable customer invoices.
-- Provide daily, monthly, and yearly sales reports.
+- Provide useful sales and purchase reports.
 - Monitor business performance and profitability.
 - Implement secure role-based access control.
+- Develop a modern and user-friendly interface.
 - Build a scalable application suitable for future business expansion.
 
 ---
@@ -77,15 +79,13 @@ Instead of maintaining stock and sales records manually, administrators and cash
 
 ### 1. Dashboard
 
-Provides an overview of business activities.
+Provides an overview of important business activities.
 
-- Total products.
-- Total categories.
-- Total suppliers.
-- Total customers.
+- Total products and categories.
+- Total suppliers and customers.
 - Today's sales summary.
 - Monthly sales overview.
-- Total purchase amount.
+- Purchase statistics.
 - Low-stock product notifications.
 - Sales and purchase statistics.
 - Profit and loss overview.
@@ -99,7 +99,7 @@ Provides an overview of business activities.
 - Maintain available stock quantities.
 - Configure minimum stock levels.
 - Search and filter products.
-- View product information and stock history.
+- View product information.
 
 ### 3. Category Management
 
@@ -183,11 +183,11 @@ Generate reports based on different time periods.
 
 ### 11. User Management
 
-- Create and manage user accounts.
+- Manage user accounts.
 - Assign Admin and Cashier roles.
 - Control access to application modules.
 - Protect administrative operations.
-- Manage user authentication and authorization.
+- Manage authentication and authorization.
 
 ---
 
@@ -210,11 +210,11 @@ The application supports two primary user roles.
 | Profit and Loss Reports | ✅ | ❌ |
 | User Management | ✅ | ❌ |
 
-**Admin:** Has full access to manage products, inventory, purchases, users, customers, suppliers, sales, and reports.
+**Admin:** Has administrative access to manage inventory, purchases, users, customers, suppliers, sales, and reports.
 
-**Cashier:** Has access to POS operations, customer management, and invoice generation.
+**Cashier:** Has access to POS operations, customer management, and invoice-related activities.
 
-All permissions must be enforced through backend authorization, not just frontend visibility.
+Permissions are enforced through backend authorization rather than relying only on frontend visibility.
 
 ---
 
@@ -222,7 +222,7 @@ All permissions must be enforced through backend authorization, not just fronten
 
 | Module | Responsibilities |
 |---|---|
-| Authentication | Login, logout, user authentication |
+| Authentication | Registration, login, logout, JWT authentication |
 | Dashboard | Business statistics and summaries |
 | Products | Product and stock management |
 | Categories | Product classification |
@@ -230,9 +230,8 @@ All permissions must be enforced through backend authorization, not just fronten
 | Customers | Customer information |
 | Purchases | Supplier purchase transactions |
 | Sales / POS | Customer sales processing |
-| Invoices | Invoice generation and printing |
+| Expenses | Business expense management |
 | Reports | Sales and financial reporting |
-| User Management | User accounts and permissions |
 
 ---
 
@@ -243,12 +242,12 @@ The system follows automated inventory and transaction management rules.
 ### Purchase Management Logic
 
 1. Admin selects a supplier.
-2. Admin adds products to the purchase.
+2. Admin adds products to a purchase.
 3. Purchase quantities and unit prices are recorded.
 4. System calculates the total purchase amount.
 5. Admin confirms the purchase.
 6. System saves the purchase transaction.
-7. Product stock increases automatically.
+7. Product stock increases accordingly.
 
 **Formula:**
 
@@ -265,8 +264,8 @@ Updated Stock = Previous Stock + Purchased Quantity
 5. System calculates the total amount.
 6. Cashier confirms the sale.
 7. System records the transaction.
-8. Product stock decreases automatically.
-9. Invoice is generated.
+8. Product stock decreases accordingly.
+9. Invoice information is generated.
 
 **Formula:**
 
@@ -288,113 +287,104 @@ Gross Profit = Sales Revenue - Cost of Goods Sold
 Net Profit = Gross Profit - Operating Expenses
 ```
 
-Profit calculations should account for discounts, returns, and the selected inventory costing method.
+Actual profit calculations should account for discounts, returns, and the inventory costing method used.
 
 ### Important Transaction Rules
 
 - Stock must not become negative.
 - Incomplete or failed sales must not reduce stock.
-- Purchase and sale operations must use database transactions.
-- Each stock change should have a corresponding stock movement record.
+- Purchase and sale operations should use database transactions.
 - Invoice numbers must be unique.
 - Duplicate transaction submissions should be prevented.
-- Stock must be restored or adjusted appropriately when a completed purchase or sale is reversed.
+- Stock should be adjusted appropriately when transactions are reversed.
 
 ---
 
 ## 🛠️ Technology Stack
 
-The project uses Python-based backend technologies and a relational database.
+The project uses a separated frontend and backend architecture.
 
 | Technology | Purpose |
 |---|---|
 | Python | Main programming language |
 | Django | Backend web framework |
-| React.js | Interactive frontend (if selected) |
-| Django Template Language (DTL) | Server-rendered frontend (if selected) |
-| Django REST Framework | API development (if using React) |
-| SQLite | Initial development database |
-| PostgreSQL | Planned production database |
+| Django REST Framework | REST API development |
+| PostgreSQL | Relational database |
+| React | Frontend user interface |
+| TypeScript | Frontend programming language |
+| Vite | Frontend development and build tool |
+| Tailwind CSS | UI styling |
+| JWT / Simple JWT | Authentication |
 | Django ORM | Database operations |
-| HTML5 | Web page structure |
-| CSS3 | Styling |
-| JavaScript | Frontend interactions |
+| django-cors-headers | Cross-origin API access |
+| drf-spectacular | API documentation |
+| WhiteNoise | Static file serving |
+| Gunicorn | Production application server |
 | Git | Version control |
 | GitHub | Repository hosting |
-| Gunicorn | Production application server |
-| Nginx | Reverse proxy and web server |
 
-### Database Strategy
+### Database
 
-**Development: SQLite**
+The project uses **PostgreSQL** for database management.
 
-SQLite will be used during the initial development phase because it is lightweight, easy to configure, and does not require a separate database server.
+Database credentials and connection settings are configured through environment variables, keeping sensitive information outside the source code.
 
-**Production: PostgreSQL**
+### Frontend Architecture
 
-PostgreSQL will be introduced during production deployment to support a more robust database environment and concurrent business transactions.
+The React frontend communicates with the Django REST API through HTTP requests.
 
-The application should use Django ORM and environment-based database configuration to make the transition easier.
-
-### Frontend Architecture Options
-
-**Option A: React + Django REST Framework**
-
-- React handles the user interface.
-- Django handles backend business logic.
-- Django REST Framework provides APIs.
-- Frontend and backend communicate through HTTP requests.
-
-**Option B: Django + DTL**
-
-- Django handles backend and frontend rendering.
-- DTL generates dynamic HTML pages.
-- Django forms and views handle user interactions.
-- Simpler deployment with fewer separate frontend services.
-
-**Option C: React + DTL Hybrid**
-
-- React handles selected interactive components.
-- DTL handles server-rendered pages.
-- Requires clearly defined frontend integration.
-
-The final implementation should use one clearly documented architecture.
+- React manages the user interface.
+- TypeScript provides type safety.
+- Vite handles development and production builds.
+- Tailwind CSS provides responsive styling.
+- The backend handles business logic, authentication, validation, and database operations.
 
 ---
 
 ## 🏗️ System Architecture
 
-### React-Based Architecture
+The application follows a client-server architecture.
 
 ```mermaid
 flowchart TD
     A[Admin / Cashier] --> B[React Frontend]
-    B --> C[HTTP Requests / REST API]
-    C --> D[Django Backend]
-    D --> E[Django REST Framework]
+    B --> C[HTTP Requests]
+    C --> D[Django REST Framework]
+    D --> E[Django Backend]
     E --> F[Django ORM]
-    F --> G[(SQLite - Development)]
-    F --> H[(PostgreSQL - Production)]
+    F --> G[(PostgreSQL Database)]
 ```
 
-### DTL-Based Architecture
+### Architecture Responsibilities
 
-```mermaid
-flowchart TD
-    A[Admin / Cashier] --> B[Web Browser]
-    B --> C[Django URLs]
-    C --> D[Django Views]
-    D --> E[Django Models / ORM]
-    E --> F[(SQLite / PostgreSQL)]
-    D --> G[Django Templates]
-    G --> B
-```
+**Frontend**
+- Displays the application interface.
+- Handles user interactions.
+- Manages client-side state.
+- Sends API requests.
+- Displays API responses and validation errors.
+
+**Backend**
+- Handles authentication and authorization.
+- Validates incoming requests.
+- Executes business logic.
+- Processes inventory and financial transactions.
+- Communicates with PostgreSQL.
+- Returns structured API responses.
+
+**Database**
+- Stores users and business information.
+- Maintains inventory records.
+- Stores purchase and sales transactions.
+- Maintains customer and supplier information.
 
 ---
 
 ## 🗄️ Database Design
 
-The following entities are recommended for the application.
+The database uses PostgreSQL and Django ORM.
+
+The main business entities include:
 
 | Entity | Purpose |
 |---|---|
@@ -407,28 +397,16 @@ The following entities are recommended for the application.
 | PurchaseItem | Stores purchased product details |
 | Sale | Stores sales transactions |
 | SaleItem | Stores sold product details |
-| Invoice | Stores invoice information |
-| StockMovement | Tracks inventory changes |
-
-### Database Relationships
-
-- One category can contain multiple products.
-- One supplier can have multiple purchases.
-- One purchase can contain multiple purchase items.
-- One customer can have multiple sales.
-- One sale can contain multiple sale items.
-- One user can process multiple sales.
-- One product can have multiple stock movement records.
-- One sale should have a corresponding invoice.
+| Expense | Stores business expenses |
 
 ### Database Design Considerations
 
 - Use primary and foreign keys.
 - Apply appropriate database constraints.
 - Use decimal fields for monetary values.
-- Use positive integer fields for stock quantities.
+- Use suitable fields for stock quantities.
 - Store timestamps for important transactions.
-- Use database indexes for frequently searched fields.
+- Use indexes for frequently searched fields.
 - Preserve historical purchase and sales prices.
 - Avoid hard deletion of completed financial transactions.
 
@@ -436,13 +414,12 @@ The following entities are recommended for the application.
 
 ## 📁 Project Structure
 
-Suggested Django project structure:
+The repository is organized into separate backend and frontend directories.
 
 ```text
-inventory-pos-system/
+inventory_pos_system/
 │
 ├── backend/
-│   │
 │   ├── config/
 │   │   ├── settings.py
 │   │   ├── urls.py
@@ -458,35 +435,27 @@ inventory-pos-system/
 │   │   ├── customers/
 │   │   ├── purchases/
 │   │   ├── sales/
-│   │   ├── invoices/
-│   │   └── reports/
+│   │   └── expenses/
 │   │
 │   ├── manage.py
-│   └── requirements.txt
+│   ├── requirements.txt
+│   └── .env
 │
 ├── frontend/
 │   ├── public/
 │   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── assets/
-│   │   └── App.jsx
-│   └── package.json
+│   ├── package.json
+│   ├── vite.config.ts
+│   └── .env
 │
-├── docs/
-│   ├── database-design.md
-│   ├── api-documentation.md
-│   └── screenshots/
-│
-├── tests/
-│
-├── .env.example
-├── .gitignore
-└── README.md
+├── API_DOCUMENTATION.md
+├── ARCHITECTURE.md
+├── PROGRESS.md
+├── README.md
+└── .gitignore
 ```
 
-**Note:** The `frontend/` directory applies to a React implementation. For a DTL implementation, Django templates and static files can be maintained within the relevant Django apps or a central templates/static directory.
+**Note:** Environment files, virtual environments, dependency directories, generated build files, and other sensitive or temporary files are excluded from version control.
 
 ---
 
@@ -498,135 +467,151 @@ Follow these instructions to run the project locally.
 
 Install the following software:
 
-- Python 3.12+ (or the version specified by the project).
-- Git.
-- VS Code or another code editor.
-- Node.js and npm (only if using React).
-- A modern web browser.
+- Python
+- Node.js and npm
+- PostgreSQL
+- Git
+- VS Code or another code editor
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/USERNAME/REPOSITORY-NAME.git
+git clone <repository-url>
 ```
 
 ### Step 2: Navigate to the Project
 
 ```bash
-cd REPOSITORY-NAME
+cd inventory_pos_system
 ```
 
-### Step 3: Create a Virtual Environment
+### Step 3: Set Up the Backend
 
-Windows:
-
-```bash
-python -m venv venv
-```
-
-Activate:
-
-```bash
-venv\Scripts\activate
-```
-
-Linux / macOS:
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### Step 4: Install Backend Dependencies
-
-```bash
-pip install -r backend/requirements.txt
-```
-
-If your requirements file is located in the project root, use its actual path instead.
-
-### Step 5: Configure Environment Variables
-
-Create a `.env` file based on `.env.example`.
-
-See the environment configuration section below.
-
-### Step 6: Apply Database Migrations
-
-Navigate to the Django backend directory:
+Navigate to the backend directory:
 
 ```bash
 cd backend
 ```
 
-Run:
+Create a virtual environment:
 
 ```bash
-python manage.py makemigrations
+python -m venv venv
+```
+
+Activate it on Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Configure Environment Variables
+
+Create a `.env` file inside the backend directory.
+
+Configure your local PostgreSQL database credentials and application settings.
+
+See the environment configuration section below.
+
+### Step 5: Apply Database Migrations
+
+```bash
 python manage.py migrate
 ```
 
-### Step 7: Create Admin Account
+Create an administrator account if required:
 
 ```bash
 python manage.py createsuperuser
 ```
 
-### Step 8: Start the Django Server
+### Step 6: Start the Backend Server
 
 ```bash
 python manage.py runserver
 ```
 
-Access the application:
+The Django development server will run at:
 
 ```text
 http://127.0.0.1:8000/
 ```
 
-### Step 9: Run React Frontend (If Applicable)
+### Step 7: Set Up the Frontend
 
-Open another terminal:
+Open another terminal and navigate to the frontend directory:
 
 ```bash
 cd frontend
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Configure the frontend environment variable:
+
+```env
+VITE_API_URL=http://127.0.0.1:8000/api
+```
+
+Start the frontend development server:
+
+```bash
 npm run dev
 ```
 
-Use the local URL displayed by the frontend development server.
+Vite will display the local frontend URL in the terminal, usually:
+
+```text
+http://localhost:5173/
+```
 
 ---
 
 ## 🔐 Environment Configuration
 
-Never commit your actual `.env` file to GitHub.
+Environment variables are used to manage application configuration and sensitive credentials.
 
-Example `.env.example`:
+Never commit actual `.env` files or database passwords to GitHub.
+
+### Backend Environment Variables
+
+Example configuration:
 
 ```env
 # Application
+SECRET_KEY=your-secret-key
 DEBUG=True
-SECRET_KEY=replace-with-a-secure-secret-key
-ALLOWED_HOSTS=localhost,127.0.0.1
 
 # Database
-DB_ENGINE=sqlite
-DB_NAME=db.sqlite3
-
-# PostgreSQL configuration for future production use
-DB_USER=inventory_user
-DB_PASSWORD=change-this-password
+DB_NAME=inventory_pos
+DB_USER=postgres
+DB_PASSWORD=your-local-database-password
 DB_HOST=localhost
 DB_PORT=5432
 
-# Frontend
-FRONTEND_URL=http://localhost:5173
+# Hosts and frontend access
+ALLOWED_HOSTS=localhost,127.0.0.1
+CSRF_TRUSTED_ORIGINS=http://localhost:5173
+CORS_ALLOWED_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
 
-The actual environment variable names should match your Django settings configuration.
+### Frontend Environment Variables
 
-For production, use secure environment variables, a strong secret key, `DEBUG=False`, and the appropriate allowed hosts.
+```env
+VITE_API_URL=http://127.0.0.1:8000/api
+```
+
+For production, configure the appropriate environment variables through the hosting providers. Use a secure secret key, `DEBUG=False`, production database credentials, and the correct domain names.
 
 ---
 
@@ -634,24 +619,26 @@ For production, use secure environment variables, a strong secret key, `DEBUG=Fa
 
 ```mermaid
 flowchart TD
-    A[User Login] --> B{User Role}
-    B -->|Admin| C[Admin Dashboard]
-    B -->|Cashier| D[Cashier Dashboard]
+    A[User Opens Application] --> B[Authentication]
+    B --> C{User Role}
 
-    C --> E[Product Management]
-    C --> F[Supplier Management]
-    C --> G[Customer Management]
-    C --> H[Purchase Management]
-    C --> I[Reports]
+    C -->|Admin| D[Admin Dashboard]
+    C -->|Cashier| E[POS Interface]
 
-    H --> J[Increase Stock]
+    D --> F[Product Management]
+    D --> G[Category Management]
+    D --> H[Supplier Management]
+    D --> I[Purchase Management]
+    D --> J[Customer Management]
+    D --> K[Reports]
 
-    D --> K[POS Screen]
-    K --> L[Select Products]
-    L --> M[Validate Stock]
-    M --> N[Complete Sale]
-    N --> O[Decrease Stock]
-    N --> P[Generate Invoice]
+    I --> L[Update Inventory]
+
+    E --> M[Select Products]
+    M --> N[Validate Stock]
+    N --> O[Complete Sale]
+    O --> P[Update Inventory]
+    O --> Q[Generate Invoice]
 ```
 
 ---
@@ -660,138 +647,115 @@ flowchart TD
 
 Security is essential for protecting business and transaction information.
 
-Recommended security practices:
+The application uses or is configured for the following security measures:
 
-- Django authentication and password hashing.
+- JWT-based authentication.
 - Role-based access control.
-- Server-side input validation.
+- Backend request validation.
+- Django password hashing.
 - CSRF protection.
-- SQL injection protection through Django ORM.
-- Secure session management.
+- CORS configuration.
+- Django ORM for database operations.
 - Environment-based secret management.
-- HTTPS for production.
-- Restricted access to administrative functions.
-- Database transaction handling.
-- Regular database backups.
-- Audit trails for important stock and financial operations.
+- HTTPS configuration for production.
+- Restricted access to administrative operations.
+
+Production deployment must use secure environment variables and disable Django debug mode.
 
 ---
 
 ## 🧪 Testing
 
-The application should be tested before integration and production deployment.
+The backend includes automated tests for important application functionality.
 
-### Recommended Test Cases
+**Current project test suite: 93 tests** (as recorded in the project documentation).
 
-| Test Case | Expected Result |
-|---|---|
-| User login | Authorized users can log in |
-| Invalid login | Access is denied |
-| Add product | Product is saved successfully |
-| Update product | Product information is updated |
-| Add purchase | Stock increases correctly |
-| Complete sale | Stock decreases correctly |
-| Insufficient stock | Sale is rejected |
-| Low stock threshold | Alert is displayed |
-| Generate invoice | Correct invoice is generated |
-| Cashier permissions | Restricted pages are inaccessible |
-| Sales report | Correct sales totals are displayed |
-| Cancel purchase | Stock is adjusted correctly |
-| Failed transaction | No partial stock update occurs |
-
-### Running Django Tests
+Run the Django test suite from the backend directory:
 
 ```bash
 python manage.py test
 ```
 
-For a React frontend, configure and run the frontend test suite separately.
+### Testing Objectives
+
+- Validate authentication and authorization.
+- Verify product and category operations.
+- Test purchase and sales calculations.
+- Validate stock updates.
+- Check customer and supplier operations.
+- Verify report calculations.
+- Ensure restricted operations are protected.
+
+Frontend tests should be run separately when a frontend test suite is configured.
 
 ---
 
 ## 🚀 Deployment
 
-The application will initially run locally using Django and SQLite.
+The project is being prepared for free cloud deployment using separate hosting services for the frontend and backend.
 
-For production, the recommended architecture is a Linux-based VPS or cloud server using PostgreSQL.
+### Planned Production Stack
 
-### Recommended Production Stack
-
-| Component | Technology |
+| Component | Platform / Technology |
 |---|---|
-| Operating System | Ubuntu Linux |
-| Backend | Django |
+| Frontend | Vercel |
+| Backend | Render |
+| Database | Hosted PostgreSQL |
+| Backend Framework | Django REST Framework |
 | Application Server | Gunicorn |
-| Web Server | Nginx |
-| Database | PostgreSQL |
-| Frontend | React build / Django Templates |
-| Static Files | Nginx or WhiteNoise |
-| Security | HTTPS / SSL |
-| Hosting | VPS / Cloud Hosting |
+| Static Files | WhiteNoise |
+| Database Connection | Environment variables |
 
-### Production Deployment Architecture
+### Deployment Architecture
 
 ```mermaid
 flowchart TD
-    A[User Browser] --> B[HTTPS]
-    B --> C[Nginx]
-    C --> D[Gunicorn]
-    D --> E[Django Application]
-    E --> F[PostgreSQL Database]
-    C --> G[Static Files]
+    A[User Browser] --> B[Vercel]
+    B --> C[React Frontend]
+    C --> D[HTTPS API Requests]
+    D --> E[Render]
+    E --> F[Django REST Framework]
+    F --> G[(Hosted PostgreSQL)]
 ```
 
-### Production Deployment Steps
+### Backend Deployment Preparation
 
-1. Provision a Linux VPS or cloud server.
-2. Install Python and required system packages.
-3. Clone the project repository.
-4. Create and activate a Python virtual environment.
-5. Install project dependencies.
-6. Configure production environment variables.
-7. Configure PostgreSQL.
-8. Run Django database migrations.
-9. Create the initial administrator account.
-10. Collect static files.
-11. Configure Gunicorn.
-12. Configure Nginx as a reverse proxy.
-13. Configure a domain name and HTTPS certificate.
-14. Configure database backups and application logging.
-15. Run security and functionality checks.
+The backend is configured for production deployment with:
 
-### Django Production Checks
+- PostgreSQL database support.
+- Environment-based configuration.
+- WhiteNoise static file handling.
+- Gunicorn application server.
+- Production host and CORS settings.
+- HTTPS-aware security settings.
 
-```bash
-python manage.py check --deploy
+### Frontend Deployment Preparation
+
+The frontend uses a production API URL configured through the Vercel environment variables.
+
+Example:
+
+```env
+VITE_API_URL=https://your-backend-domain/api
 ```
 
-### Database Migration
+### Important Deployment Notes
 
-```bash
-python manage.py migrate
-```
+- Keep production credentials out of GitHub.
+- Configure `DEBUG=False` in production.
+- Configure the correct `ALLOWED_HOSTS`.
+- Configure frontend CORS and CSRF trusted origins.
+- Run database migrations after deployment.
+- Verify API connectivity between frontend and backend.
+- Test authentication, sales, purchases, and reports in the deployed environment.
 
-### Collect Static Files
-
-```bash
-python manage.py collectstatic
-```
-
-### Start Gunicorn
-
-```bash
-gunicorn config.wsgi:application
-```
-
-Replace `config` with the actual Django project package name.
-
-**Important:** Gunicorn is intended for production application serving. Do not use Django's development server as the public production server.
+**Deployment status:** Deployment preparation is in progress. The production URLs should be added here after successful deployment.
 
 ---
 
 ## 🌿 Git and GitHub Workflow
 
-This project follows a feature-based Git branching strategy to support collaborative development.
+The project uses Git and GitHub for version control and collaborative development.
 
 ### Branch Structure
 
@@ -811,47 +775,47 @@ main
 
 | Branch | Purpose |
 |---|---|
-| main | Stable, production-ready code |
-| develop | Integration branch |
-| feature/* | New feature development |
-| bugfix/* | Bug fixes |
-| hotfix/* | Urgent production fixes |
+| `main` | Stable, production-ready code |
+| `develop` | Integration branch |
+| `feature/*` | New feature development |
+| `bugfix/*` | Bug fixes |
+| `hotfix/*` | Urgent production fixes |
 
 ### Development Workflow
 
-**Step 1:** Clone the repository.
+**Step 1: Clone the repository**
 
 ```bash
 git clone <repository-url>
 ```
 
-**Step 2:** Switch to the development branch.
+**Step 2: Switch to the development branch**
 
 ```bash
-git checkout develop
+git switch develop
 git pull origin develop
 ```
 
-**Step 3:** Create a feature branch.
+**Step 3: Create a feature branch**
 
 ```bash
-git checkout -b feature/product-management
+git switch -c feature/product-management
 ```
 
-**Step 4:** Make changes and commit.
+**Step 4: Make changes and commit**
 
 ```bash
 git add .
 git commit -m "feat: implement product management"
 ```
 
-**Step 5:** Push the feature branch.
+**Step 5: Push the feature branch**
 
 ```bash
 git push -u origin feature/product-management
 ```
 
-**Step 6:** Create a Pull Request.
+**Step 6: Create a Pull Request**
 
 - Source: `feature/product-management`
 - Target: `develop`
@@ -862,17 +826,15 @@ git push -u origin feature/product-management
 
 ### Commit Message Convention
 
-Use meaningful commit messages.
-
 | Prefix | Purpose |
 |---|---|
-| feat | New feature |
-| fix | Bug fix |
-| docs | Documentation |
-| style | Code formatting |
-| refactor | Code restructuring |
-| test | Adding or updating tests |
-| chore | Maintenance tasks |
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `docs` | Documentation |
+| `style` | Code formatting |
+| `refactor` | Code restructuring |
+| `test` | Adding or updating tests |
+| `chore` | Maintenance tasks |
 
 Examples:
 
@@ -892,17 +854,15 @@ Potential enhancements for future versions:
 - Barcode scanning.
 - Multiple shop and branch management.
 - Product returns and refunds.
-- Expense management.
 - Supplier payment tracking.
 - Customer due management.
 - PDF invoice downloads.
 - Email and SMS notifications.
 - Advanced inventory analytics.
-- Stock transfer between branches.
+- Stock transfers between branches.
 - Cloud-based database backups.
-- REST API integrations.
 - Advanced user activity logs.
-- Mobile-responsive POS interface.
+- Additional reporting and analytics features.
 
 ---
 
@@ -931,11 +891,11 @@ Please follow the project's coding standards and branching conventions.
 
 **Project Category:** Full-Stack Web Application
 
-**Backend:** Python & Django
+**Backend:** Python, Django & Django REST Framework
 
-**Frontend:** React / Django Template Language
+**Frontend:** React, TypeScript, Vite & Tailwind CSS
 
-**Database:** SQLite (Development) / PostgreSQL (Production)
+**Database:** PostgreSQL
 
 **Version Control:** Git & GitHub
 
