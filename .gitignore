@@ -1,0 +1,28 @@
+
+# Python / Django
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+db.sqlite3
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Django generated files
+staticfiles/
+media/
+
+# Frontend
+node_modules/
+dist/
+
+# Logs
+*.log
+
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
