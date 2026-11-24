@@ -6,7 +6,7 @@ The application helps small and medium-sized businesses manage their daily opera
 
 The project uses a **Django REST Framework backend**, a modern **React + TypeScript frontend**, and **PostgreSQL** as its database.
 
-🌐 **Live Application:** [https://www.coderadia.dev](https://www.coderadia.dev)
+🌐 **Live Application:** [https://inventory-pos-system-ten.vercel.app](https://inventory-pos-system-ten.vercel.app)
 
 💻 **GitHub Repository:** [inventory_pos_system](https://github.com/radiamahbub/inventory_pos_system)
 
@@ -63,7 +63,7 @@ Instead of maintaining inventory and sales records manually, administrators and 
 | Frontend Hosting | Vercel |
 | Backend Hosting | Render |
 | Database Hosting | Neon PostgreSQL |
-| Live Domain | coderadia.dev |
+| Live Application | https://inventory-pos-system-ten.vercel.app |
 
 ---
 
@@ -680,15 +680,15 @@ The application has been successfully deployed using separate cloud hosting serv
 | Frontend | Vercel | Deployed |
 | Backend | Render | Deployed |
 | Database | Neon PostgreSQL | Connected |
-| Custom Domain | coderadia.dev | Configured |
-| HTTPS | Production domain | Enabled |
+| Custom Domain | Not in use | Removed |
+| HTTPS | Vercel deployment URL | Enabled |
 
 ### Live URLs
 
 | Service | URL |
 |---|---|
-| Main Website | [https://www.coderadia.dev](https://www.coderadia.dev) |
-| Root Domain | [https://coderadia.dev](https://coderadia.dev) |
+| Main Website | [https://inventory-pos-system-ten.vercel.app](https://inventory-pos-system-ten.vercel.app) |
+| Root Domain | [https://inventory-pos-system-ten.vercel.app](https://inventory-pos-system-ten.vercel.app) |
 | Frontend Deployment | [Vercel](https://inventory-pos-system-ten.vercel.app) |
 | Backend Health Check | [Render API Health](https://inventory-pos-backend-4119.onrender.com/api/health/) |
 | Source Code | [GitHub Repository](https://github.com/radiamahbub/inventory_pos_system) |
@@ -710,7 +710,7 @@ flowchart TD
 **Frontend — Vercel**
 - Hosts the React application.
 - Uses the production API URL.
-- Serves the application through the custom domain.
+- Serves the application through its Vercel deployment URL.
 
 **Backend — Render**
 - Hosts the Django REST Framework API.
@@ -730,7 +730,7 @@ flowchart TD
 - The original business data was migrated from SQLite to PostgreSQL.
 - Database backups are maintained separately from the GitHub repository.
 
-**The application is live and accessible through its custom domain.**
+**The application is live and accessible through its Vercel deployment URL.**
 
 ---
 
@@ -885,7 +885,7 @@ Please follow the project's coding standards and branching conventions.
 
 ### Project Links
 
-- **Live Application:** [www.coderadia.dev](https://www.coderadia.dev)
+- **Live Application:** [inventory-pos-system-ten.vercel.app](https://inventory-pos-system-ten.vercel.app)
 - **GitHub Repository:** [radiamahbub/inventory_pos_system](https://github.com/radiamahbub/inventory_pos_system)
 
 ---
